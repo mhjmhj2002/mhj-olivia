@@ -1,17 +1,34 @@
 package com.mhj.olivia.dto;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import com.opencsv.bean.CsvBindByPosition;
 
+import lombok.Data;
+
+@Data
 public class OliviaDataDto {
 
+	@CsvBindByPosition(position = 0)
 	private String instituicaoFinanceira;
+	
+	@CsvBindByPosition(position = 1)
 	private String tipoConta;
+	
+	@CsvBindByPosition(position = 2)
 	private String nomeConta;
-	private Date data;
+	
+	@CsvBindByPosition(position = 3)
+	private String data;
+	
+	@CsvBindByPosition(position = 4)
 	private String descricaoTransacao;
-	private BigDecimal valor;
+	
+	@CsvBindByPosition(position = 5)
+	private String valor;
+	
+	@CsvBindByPosition(position = 6)
 	private String categoriaOlivia;
-	private boolean pendente;
+	
+	@CsvBindByPosition(position = 7)
+	private String pendente;
 
 }

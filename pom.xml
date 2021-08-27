@@ -47,7 +47,11 @@
 			<artifactId>mapstruct</artifactId>
 			<version>1.4.2.Final</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -67,6 +71,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+<!-- 				<version>${org.mapstruct.version}</version> -->
 				<version>3.5.1</version>
 				<configuration>
 					<source>1.10</source>
