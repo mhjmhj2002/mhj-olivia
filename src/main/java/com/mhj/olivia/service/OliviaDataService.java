@@ -29,7 +29,11 @@ public class OliviaDataService {
 	}
 
 	public List<OliviaDataDto> produces() {
-		return builder.buildFile();
+		List<OliviaDataDto> list = builder.buildFile();
+		for (OliviaDataDto dto : list) {
+			create(dto);
+		}
+		return list;
 	}
 
 }

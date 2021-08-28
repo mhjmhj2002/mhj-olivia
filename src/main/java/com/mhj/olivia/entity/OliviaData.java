@@ -1,8 +1,5 @@
 package com.mhj.olivia.entity;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +22,10 @@ public class OliviaData {
 	private String instituicaoFinanceira;
 	private String tipoConta;
 	private String nomeConta;
-	private Date data;
+	private String data;
 	private String descricaoTransacao;
-	private BigDecimal valor;
+	private String valor;
 	private String categoriaOlivia;
-	private boolean pendente;
+	private String pendente;
 
 }

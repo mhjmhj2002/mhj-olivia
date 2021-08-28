@@ -5,12 +5,15 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.mhj.olivia.dto.OliviaDataDto;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 
+@Component
 @Builder
 @Slf4j
 public class OliviaDataBuilder {
