@@ -1,5 +1,6 @@
 package com.mhj.olivia.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import com.mhj.olivia.entity.OliviaData;
 import com.mhj.olivia.mapper.OliviaDataMapper;
 import com.mhj.olivia.repository.OliviaDataRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class OliviaDataService {
 	
 	@Autowired
@@ -28,12 +32,23 @@ public class OliviaDataService {
 		OliviaData oliviaData = mapper.toEntity(dto);
 		repository.save(oliviaData);
 	}
+	
+	public void saveAll(List<OliviaDataDto> dtos) {
+		List<OliviaData> entities = new ArrayList<>();
+		for (OliviaDataDto dto : dtos) {
+			entities.add(mapper.toEntity(dto));
+		}
+		log.info("salvar");
+		repository.saveAll(entities);
+		log.info("salvo");
+	}
 
 	public List<OliviaDataDto> produces() {
 		List<OliviaDataDto> list = builder.buildFile();
-		for (OliviaDataDto dto : list) {
-			create(dto);
-		}
+		saveAll(list);
+//		for (OliviaDataDto dto : list) {
+//			create(dto);
+//		}
 		return list;
 	}
 
