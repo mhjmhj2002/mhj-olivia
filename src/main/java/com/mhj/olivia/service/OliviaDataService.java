@@ -3,6 +3,7 @@ package com.mhj.olivia.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.mhj.olivia.builder.OliviaDataBuilder;
@@ -34,6 +35,18 @@ public class OliviaDataService {
 			create(dto);
 		}
 		return list;
+	}
+
+	public List<OliviaData> getAll() {
+		return repository.findAll();
+	}
+
+	public void delete(OliviaData oliviaData) {
+		repository.delete(oliviaData);
+	}
+
+	public OliviaData findByFilter(OliviaData oliviaData) {
+		return repository.findOne(Example.of(oliviaData)).orElse(null);
 	}
 
 }

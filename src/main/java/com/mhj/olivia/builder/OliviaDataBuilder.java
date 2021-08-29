@@ -25,6 +25,7 @@ public class OliviaDataBuilder {
 		try {
 			dtos = new CsvToBeanBuilder(new FileReader("src/main/resources/data/oliviaData.csv"))
 			        .withType(OliviaDataDto.class)
+			        .withSeparator(';')
 			        .build()
 			        .parse();
 		} catch (IllegalStateException | FileNotFoundException e) {
