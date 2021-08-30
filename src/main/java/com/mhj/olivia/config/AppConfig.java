@@ -8,17 +8,16 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 public class AppConfig {
-	
+
 	@Bean
 	public Filter getCharacterEncodingFilter() {
 
-	    CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
 
-	    encodingFilter.setEncoding("UTF-8");
-	    encodingFilter.setForceEncoding(true);
+		encodingFilter.setEncoding("UTF-8");
+		encodingFilter.setForceEncoding(true);
 
-	    return encodingFilter;
+		return encodingFilter;
 
 	}
-
 }

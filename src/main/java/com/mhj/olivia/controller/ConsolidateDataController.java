@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mhj.olivia.service.ConsolidateDataService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/consolidate-data")
+@Slf4j
 public class ConsolidateDataController {
 	
 	@Autowired
@@ -18,7 +21,9 @@ public class ConsolidateDataController {
 
     @GetMapping(name = "/all")
     public String getAll() throws ParseException {
+    	log.info("Inicio");
         service.consolidateData();
+        log.info("Fim");
         return "OK";
     }
 

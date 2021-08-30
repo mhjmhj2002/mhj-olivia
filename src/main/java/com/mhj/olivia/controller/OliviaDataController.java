@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mhj.olivia.dto.OliviaDataDto;
 import com.mhj.olivia.service.OliviaDataService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/olivia-data")
+@Slf4j
 public class OliviaDataController {
 	
 	@Autowired
@@ -19,7 +22,10 @@ public class OliviaDataController {
 
     @GetMapping(name = "/all")
     public List<OliviaDataDto> getAll() {
-        return service.produces();
+    	log.info("Inicio");
+        List<OliviaDataDto> list = service.produces();
+        log.info("Fim");
+        return list;
     }
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mhj.olivia.builder.OliviaDataBuilder;
 import com.mhj.olivia.dto.OliviaDataDto;
@@ -33,14 +34,13 @@ public class OliviaDataService {
 		repository.save(oliviaData);
 	}
 	
+	@Transactional
 	public void saveAll(List<OliviaDataDto> dtos) {
 		List<OliviaData> entities = new ArrayList<>();
 		for (OliviaDataDto dto : dtos) {
 			entities.add(mapper.toEntity(dto));
 		}
-		log.info("salvar");
 		repository.saveAll(entities);
-		log.info("salvo");
 	}
 
 	public List<OliviaDataDto> produces() {
