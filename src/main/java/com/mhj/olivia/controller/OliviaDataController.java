@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mhj.olivia.dto.OliviaDataDto;
+import com.mhj.olivia.exception.DuplicateException;
 import com.mhj.olivia.service.OliviaDataService;
 
 @RestController
@@ -35,8 +36,12 @@ public class OliviaDataController {
     
     @PostMapping
     public ResponseEntity<OliviaDataDto> incluir(@RequestBody final OliviaDataDto dto) {
-    	final OliviaDataDto retorno = service.criar(dto);
-    	return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
+    	try {
+    		final OliviaDataDto retorno = service.criar(dto);
+    		return ResponseEntity.status(HttpStatus.CREATED).body(retorno);
+		} catch (DuplicateException e) {
+			return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(dto);
+		}
     }
 
 }

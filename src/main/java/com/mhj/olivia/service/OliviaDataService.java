@@ -1,10 +1,12 @@
 package com.mhj.olivia.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.mhj.olivia.dto.OliviaDataDto;
 import com.mhj.olivia.entity.OliviaData;
+import com.mhj.olivia.exception.DuplicateException;
 import com.mhj.olivia.mapper.OliviaDataMapper;
 import com.mhj.olivia.repository.OliviaDataRepository;
 
@@ -20,12 +22,16 @@ public class OliviaDataService {
 	@Autowired
 	private OliviaDataMapper mapper;
 
-	public OliviaDataDto criar(OliviaDataDto dto) {
+	public OliviaDataDto criar(OliviaDataDto dto) throws DuplicateException {
 		log.info("Incluir olivia data: {}", dto.toString());
 		OliviaData entity = mapper.toEntity(dto);
-		OliviaData save = repository.save(entity);
-		log.info("Incluido olivia data: {}", save.toString());
-		return mapper.toDto(save);
+		try {
+			OliviaData save = repository.save(entity);
+			log.info("Incluido olivia data: {}", save.toString());
+			return mapper.toDto(save);
+		} catch (DataIntegrityViolationException e) {
+			throw new DuplicateException("registro duplicado");
+		}
 	}
 
 }
