@@ -1,16 +1,14 @@
 package com.mhj.olivia.entity;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +18,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
 @ToString
+@Entity
+@Table(uniqueConstraints = 
+@UniqueConstraint(name = "UniqueOliviaData", columnNames = { "nomeConta", "data", "descricaoTransacao", "valor" }))
 public class OliviaData {
 
 	@Id
