@@ -29,7 +29,7 @@ public class OliviaDataController {
     public List<OliviaDataDto> getAll() {
     	ArrayList<OliviaDataDto> list = new ArrayList<OliviaDataDto>();
     	OliviaDataDto dto = new OliviaDataDto();
-    	dto.setCategoriaOlivia("categoriaOlivia");
+    	dto.setDescricaoTransacao("descricaoTransacao");
     	list.add(dto);
         return list;
     }

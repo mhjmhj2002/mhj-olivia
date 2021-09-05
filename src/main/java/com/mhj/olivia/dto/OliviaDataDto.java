@@ -16,7 +16,7 @@ public class OliviaDataDto {
 	private Date data;
 	private String descricaoTransacao;
 	private BigDecimal valor;
-	private String categoriaOlivia;
+	private CategoriaOliviaDto categoriaOlivia;
 	private Boolean pendente;
 
 }
